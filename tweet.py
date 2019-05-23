@@ -34,19 +34,26 @@ days_left = (the_future - now).days
 total_days = (the_future - the_past).days
 
 messages = [
-    u"Only {} days of Trump left!".format(
+##    u"Only {} days of Zelenskiy left!".format(
+##        humanize.intcomma(days_left),
+##    ),
+##    u"Loading new president…\n{}\n{:0.1f}% complete".format(
+##        progress_bar(float(days_in) / total_days, 30),
+##        (float(days_in) / total_days) * 100.0,
+##    ),
+    u"Зеленському лишилось {} днів!".format(
         humanize.intcomma(days_left),
     ),
-    u"Loading new president…\n{}\n{:0.1f}% complete".format(
-        progress_bar(float(days_in) / total_days, 30),
-        (float(days_in) / total_days) * 100.0,
+    u"Завантаження нового Президента…\n{}\n{:0.1f}% виконано".format(
+        progress_bar(float(days_in) / total_days, 31),
+        (float(days_in) /total_days) * 100.0,
     )
 ]
 
 message = random.choice(messages)
 
 if dry_run:
-    logging.info("In dry run mode. Would have tweeted (in reply to %s): %s",
+    logging.info("In dry run mode. Would have tweeted (in reply to %s):\n\n%s\n",
                  previous_tweet_id, message)
 else:
     consumer_key = os.environ.get('CONSUMER_KEY')
