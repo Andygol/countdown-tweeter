@@ -5,6 +5,7 @@ import humanize
 import tweepy
 import random
 from progress_bar import progress_bar
+from plural import plural_days
 
 import logging
 import sys
@@ -41,8 +42,9 @@ messages = [
 ##        progress_bar(float(days_in) / total_days, 30),
 ##        (float(days_in) / total_days) * 100.0,
 ##    ),
-    u"Зеленському лишилось {} днів!".format(
+    u"Зеленському лишилось {} {}!".format(
         humanize.intcomma(days_left),
+        plural_days(days_left),
     ),
     u"Завантаження нового Президента…\n{}\n{:0.1f}% виконано".format(
         progress_bar(float(days_in) / total_days, 31),
